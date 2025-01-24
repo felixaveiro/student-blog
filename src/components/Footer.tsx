@@ -36,7 +36,7 @@ export default function Footer() {
             </li>
             <li>
               <Link href="/blog" className="hover:underline hover:text-gray-200 transition">
-                  Blog
+                  Activity
               </Link>
             </li>
             <li>
@@ -90,13 +90,15 @@ export default function Footer() {
             </a>
           </div>
         </div>
+        
       </div>
 
       {/* Bottom Bar */}
       <div className="mt-8 border-t border-green-600 pt-4 text-center text-sm text-gray-400">
+        
         <p>
-          © {new Date().getFullYear()} NMSA Rwanda. All rights reserved. Built
-          with ❤️ by Nurse and Midwife Student Community.
+          © {new Date().getFullYear()} NMSA Rwanda. All rights reserved.<br />
+           Built with ❤️ by Nerd-lab Rwanda.
         </p>
       </div>
     </footer>
