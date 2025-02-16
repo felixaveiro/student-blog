@@ -65,13 +65,6 @@ export default function HomePage() {
             </div>
           </div>
         </div>
-
-        {/* Scrolling Indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-          <div className="w-8 h-14 rounded-3xl border-4 border-white flex items-start justify-center p-1">
-            <div className="w-2 h-2 bg-white rounded-full animate-scroll-indicator" />
-          </div>
-        </div>
       </section>
 
       {/* Image Grid Section */}
