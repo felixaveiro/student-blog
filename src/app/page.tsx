@@ -1,15 +1,27 @@
 import React from "react";
 import Link from "next/link";
-import { ChevronRight, Heart, Users, Target, Mail, ArrowRight, Star, Shield, Activity } from "lucide-react";
+import Image from "next/image";
+import { ChevronRight, Heart, Users, Target, ArrowRight, Shield, Activity } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 
 export default function HomePage() {
   return (
     <main className="bg-gradient-to-b from-gray-50 to-white">
-      {/* Hero Section with Dynamic Elements */}
+      {/* Enhanced Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-green-700 to-green-900">
-          {/* Animated Particles */}
+        <div className="absolute inset-0">
+          <Image
+            src="/images/hero.jpg"
+            alt="Nursing students"
+            layout="fill"
+            objectFit="cover"
+            className="opacity-90"
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-green-900/90 to-green-700/80" />
+        </div>
+        
+        {/* Animated Particles */}
+        <div className="absolute inset-0">
           {[...Array(30)].map((_, i) => (
             <div
               key={i}
@@ -25,6 +37,7 @@ export default function HomePage() {
             />
           ))}
         </div>
+
         <div className="relative container mx-auto px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
             <div className="inline-block animate-bounce-slow mb-8">
@@ -34,7 +47,7 @@ export default function HomePage() {
             </div>
             <h1 className="text-5xl md:text-7xl font-bold text-white mb-8 leading-tight">
               Empowering Future
-              <span className="block text-green-300">Healthcare Leaders</span>
+              <span className="block text-green-300 mt-4">Healthcare Leaders</span>
             </h1>
             <p className="text-xl md:text-2xl text-white/90 mb-12 leading-relaxed">
               NMSA Rwanda is your gateway to education, advocacy, and innovation
@@ -52,34 +65,42 @@ export default function HomePage() {
             </div>
           </div>
         </div>
-        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-gray-50 to-transparent" />
+
+        {/* Scrolling Indicator */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+          <div className="w-8 h-14 rounded-3xl border-4 border-white flex items-start justify-center p-1">
+            <div className="w-2 h-2 bg-white rounded-full animate-scroll-indicator" />
+          </div>
+        </div>
       </section>
 
-      {/* About Section with Floating Elements */}
-      <section className="py-32 relative">
+      {/* Image Grid Section */}
+      <section className="py-16 bg-white">
         <div className="container mx-auto px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div className="relative">
-              <div className="absolute -top-8 -left-8 w-64 h-64 bg-green-100 rounded-full blur-3xl opacity-50" />
-              <div className="absolute -bottom-8 -right-8 w-64 h-64 bg-blue-100 rounded-full blur-3xl opacity-50" />
-              <img
-                src="/images/abt.jpg"
-                alt="About Us"
-                className="relative rounded-3xl shadow-2xl transform hover:scale-105 transition-all duration-500"
-              />
-              <div className="absolute -bottom-12 right-12 bg-white rounded-2xl shadow-xl p-6 transform hover:scale-110 transition-all duration-300">
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
-                    <Star className="w-6 h-6 text-green-700" />
-                  </div>
-                  <div>
-                    <div className="font-bold text-green-700">1,200+</div>
-                    <div className="text-sm text-gray-600">Students Joined</div>
-                  </div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {[1, 2, 3, 4].map((item) => (
+              <div key={item} className="relative aspect-square overflow-hidden rounded-xl group">
+                <Image
+                  src={`/images/grid-${item}.jpg`}
+                  alt={`Gallery ${item}`}
+                  layout="fill"
+                  objectFit="cover"
+                  className="hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                  <span className="text-white font-bold text-lg">View More</span>
                 </div>
               </div>
-            </div>
-            <div className="space-y-8">
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Enhanced About Section */}
+      <section className="py-32 relative bg-green-50">
+        <div className="container mx-auto px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div className="relative space-y-8">
               <div className="inline-block">
                 <div className="text-sm font-semibold text-green-700 bg-green-100 px-4 py-2 rounded-full">
                   About NMSA Rwanda
@@ -104,12 +125,26 @@ export default function HomePage() {
                 <ChevronRight className="transform group-hover:translate-x-2 transition-transform duration-300" />
               </Link>
             </div>
+            <div className="relative grid grid-cols-2 gap-4">
+              {[1, 2, 3, 4].map((item) => (
+                <div key={item} className={`relative overflow-hidden rounded-2xl shadow-xl ${
+                  item % 2 === 0 ? 'aspect-video' : 'aspect-square'
+                } ${item === 2 || item === 4 ? 'mt-8' : ''}`}>
+                  <Image
+                    src={`/images/about-${item}.jpg`}
+                    alt={`About ${item}`}
+                    layout="fill"
+                    objectFit="cover"
+                  />
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Statistics Section with Animated Cards */}
-      <section className="py-32 bg-green-50 relative overflow-hidden">
+      {/* Statistics Section */}
+      <section className="py-32 bg-white relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('/images/pattern.png')] opacity-5" />
         <div className="container mx-auto px-6 lg:px-8 relative">
           <div className="text-center max-w-3xl mx-auto mb-16">
@@ -124,19 +159,19 @@ export default function HomePage() {
             {[
               {
                 number: "1,200+",
-                label: "Nurse & Midwife Students Empowered",
+                label: "Students Empowered",
                 icon: <Users className="w-8 h-8" />,
                 color: "from-green-500 to-green-700",
               },
               {
                 number: "50+",
-                label: "Community Health Projects Completed",
+                label: "Health Projects",
                 icon: <Heart className="w-8 h-8" />,
                 color: "from-blue-500 to-blue-700",
               },
               {
                 number: "10+",
-                label: "National Healthcare Partnerships",
+                label: "National Partnerships",
                 icon: <Shield className="w-8 h-8" />,
                 color: "from-purple-500 to-purple-700",
               },
@@ -163,12 +198,12 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Programs Section with Interactive Cards */}
-      <section className="py-32">
+      {/* Programs Section */}
+      <section className="py-32 bg-green-50">
         <div className="container mx-auto px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-              Explore Our Programs
+              Our Programs
             </h2>
             <p className="text-xl text-gray-600">
               Discover opportunities to grow, learn, and make an impact
@@ -178,78 +213,48 @@ export default function HomePage() {
             {[
               {
                 title: "Community Health",
-                description: "Engage in impactful projects that improve rural healthcare.",
+                description: "Impactful projects improving rural healthcare",
                 icon: <Heart className="w-8 h-8" />,
-                link: "/programs#community-health",
+                image: "/images/program-3.jpg",
               },
               {
                 title: "Professional Development",
-                description: "Workshops and training to build your career in healthcare.",
+                description: "Career-building workshops and training",
                 icon: <Target className="w-8 h-8" />,
-                link: "/programs#professional-development",
+                image: "/images/program-2.jpg",
               },
               {
-                title: "Advocacy & Leadership",
-                description: "Lead initiatives that shape the future of healthcare in Rwanda.",
+                title: "Leadership",
+                description: "Shaping healthcare future in Rwanda",
                 icon: <Users className="w-8 h-8" />,
-                link: "/programs#advocacy-leadership",
+                image: "/images/program-1.jpg",
               },
             ].map((program, index) => (
-              <Link key={index} href={program.link}>
-                <Card className="group h-full hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2">
-                  <CardContent className="p-8">
-                    <div className="mb-6 text-green-700 transform group-hover:scale-110 transition-transform duration-500">
-                      {program.icon}
-                    </div>
-                    <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                      {program.title}
-                    </h3>
-                    <p className="text-gray-600 mb-6">
-                      {program.description}
-                    </p>
-                    <div className="flex items-center text-green-700 font-bold group-hover:gap-2 transition-all duration-300">
-                      Learn More
-                      <ArrowRight className="ml-2 transform group-hover:translate-x-2 transition-transform duration-300" />
-                    </div>
-                  </CardContent>
-                </Card>
-              </Link>
+              <Card key={index} className="group relative overflow-hidden h-[400px] hover:shadow-2xl transition-all duration-500">
+                <Image
+                  src={program.image}
+                  alt={program.title}
+                  layout="fill"
+                  objectFit="cover"
+                  className="opacity-90 group-hover:opacity-100 transition-opacity duration-300"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-gray-900/60 to-transparent" />
+                <CardContent className="relative h-full flex flex-col justify-end p-8">
+                  <div className="mb-4 text-white">{program.icon}</div>
+                  <h3 className="text-2xl font-bold text-white mb-2">
+                    {program.title}
+                  </h3>
+                  <p className="text-white/90 mb-6">{program.description}</p>
+                  <Link
+                    href="/programs"
+                    className="flex items-center text-white font-bold group-hover:gap-2 transition-all duration-300"
+                  >
+                    Learn More
+                    <ArrowRight className="ml-2 transform group-hover:translate-x-2 transition-transform duration-300" />
+                  </Link>
+                </CardContent>
+              </Card>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Newsletter Section with Modern Design */}
-      <section className="relative py-32 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-green-700 to-green-900">
-          <div className="absolute inset-0 bg-[url('/images/pattern.png')] opacity-10" />
-        </div>
-        <div className="relative container mx-auto px-6 lg:px-8">
-          <div className="max-w-3xl mx-auto text-center">
-            <div className="inline-block mb-8">
-              <div className="bg-white/10 backdrop-blur-lg rounded-full p-4">
-                <Mail className="w-8 h-8 text-white" />
-              </div>
-            </div>
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-              Stay Updated
-            </h2>
-            <p className="text-xl text-white/90 mb-12">
-              Subscribe to our newsletter to receive updates and news about our programs and initiatives.
-            </p>
-            <form className="flex flex-col sm:flex-row gap-4 max-w-xl mx-auto">
-              <input
-                type="email"
-                placeholder="Your email address"
-                className="flex-1 px-6 py-4 rounded-full text-gray-900 focus:outline-none focus:ring-2 focus:ring-green-500"
-              />
-              <button
-                type="submit"
-                className="bg-white text-green-700 px-8 py-4 rounded-full font-bold hover:bg-green-50 transition-all duration-300 transform hover:scale-105"
-              >
-                Subscribe
-              </button>
-            </form>
           </div>
         </div>
       </section>
