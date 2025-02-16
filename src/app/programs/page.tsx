@@ -6,7 +6,7 @@ import {
   Users,
   Target,
   ArrowRight,
-  Activity,
+
 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 
@@ -209,40 +209,6 @@ export default function ProgramsPage() {
         </div>
       </section>
 
-      {/* Newsletter Section */}
-      <section className="relative py-32 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-green-700 to-green-900">
-          <div className="absolute inset-0 bg-[url('/images/pattern.png')] opacity-10" />
-        </div>
-        <div className="relative container mx-auto px-6 lg:px-8">
-          <div className="max-w-3xl mx-auto text-center">
-            <div className="inline-block mb-8">
-              <div className="bg-white/10 backdrop-blur-lg rounded-full p-4">
-                <Activity className="w-8 h-8 text-white" />
-              </div>
-            </div>
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-              Stay Connected
-            </h2>
-            <p className="text-xl text-white/90 mb-12">
-              Subscribe to our newsletter for the latest updates on our programs and healthcare innovations.
-            </p>
-            <form className="flex flex-col sm:flex-row gap-4 max-w-xl mx-auto">
-              <input
-                type="email"
-                placeholder="Your email address"
-                className="flex-1 px-6 py-4 rounded-full text-gray-900 focus:outline-none focus:ring-2 focus:ring-green-500"
-              />
-              <button
-                type="submit"
-                className="bg-white text-green-700 px-8 py-4 rounded-full font-bold hover:bg-green-50 transition-all duration-300 transform hover:scale-105"
-              >
-                Subscribe
-              </button>
-            </form>
-          </div>
-        </div>
-      </section>
     </main>
   );
 }

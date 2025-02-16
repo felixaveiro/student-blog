@@ -261,8 +261,8 @@ const JoinFormPage = () => {
               >
                 <option value="">Select PROGRAM</option>
                 <option value="advanced-diploma">Advanced Diploma</option>
-                <option value="bachelors">Bachelor's Degree</option>
-                <option value="masters">Master's Degree</option>
+                <option value="bachelors">Bachelor&apos;s Degree</option>
+                <option value="masters">Master&apos;s Degree</option>
               </select>
             </div>
             <div>
